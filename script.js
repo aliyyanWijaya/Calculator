@@ -34,3 +34,12 @@ const operate = (num1, operator, num2) => {
             return "error"
     }
 }
+
+// get the text inside button
+const myButton = document.querySelectorAll("button");
+
+myButton.forEach(button => {
+    button.addEventListener("click", () =>{
+        console.log(button.innerText);
+    })
+})
