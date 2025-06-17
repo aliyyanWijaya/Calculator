@@ -16,7 +16,11 @@ body {
 .display {
     border: 2px solid black;
     height: 100px;
-    width: 310px;
+    width: 300px;
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
 }
 
 .container > div {
@@ -38,5 +42,5 @@ button {
 
 button:hover {
   cursor: pointer;
-  background-color: #ffbd03;
+  background-color: yellow;
 }
