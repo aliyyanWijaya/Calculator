@@ -13,5 +13,24 @@ const multiplyNum = (num1, num2) => num1 * num2;
 const divideNum = (num1, num2) => num1 / num2;
 
 let num1 = 0;
-let operator = 0;
+let operator = "";
 let num2 = 0;
+
+const operate = (num1, operator, num2) => {
+    switch(operator) {
+        case "+":
+            addNum(num1, num2);
+            break;
+        case "-":
+            subtractNum(num1, num2);
+            break;
+        case "x":
+            multiplyNum(num1, num2);
+            break;
+        case "/":
+            divideNum(num1, num2);
+            break;
+        default:
+            return "error"
+    }
+}
