@@ -35,11 +35,27 @@ const operate = (num1, operator, num2) => {
     }
 }
 
-// get the text inside button
-const myButton = document.querySelectorAll("button");
+const display = document.querySelector(".display");
+// get the text inside button exclude clear and equal button
+const myButton = document.querySelectorAll("button:not(.clear-button):not(.equalbutton)");
 
 myButton.forEach(button => {
     button.addEventListener("click", () =>{
-        console.log(button.innerText);
+        const displayNum = button.innerText;
+        display.append(displayNum);
+        
     })
+})
+
+// remove the display when Clear button clicked
+const clearButton = document.querySelector(".clear-button");
+
+const removeLastCharacter = (str) => {
+    let newString = str.slice(0, -1);
+    return newString;
+}
+
+clearButton.addEventListener("click", () => {
+    let newDisp = removeLastCharacter(display.innerText);
+    display.innerText = newDisp;
 })
