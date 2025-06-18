@@ -56,13 +56,13 @@ clearButton.addEventListener("click", () => {
 // evaluate when user click =
 const evalButton = document.querySelector(".equal-button");
 const mathOperatorsRegex = /(\+|-|\*|\/|x)/;  // Capturing group for operators
+const displayResult = document.querySelector(".display-result");
 
 evalButton.addEventListener("click", () => {
     const getDisplay = display.innerText;
     let splitDisplay = getDisplay.split(mathOperatorsRegex);
-    console.log(splitDisplay);
     numInp1 = Number(splitDisplay[0]);
     operInp = splitDisplay[1];
     numInp2 = Number(splitDisplay[2]);
-    console.log(operate(numInp1, operInp, numInp2));
+    displayResult.innerText = operate(numInp1, operInp, numInp2);
 })
