@@ -1,43 +1,36 @@
 //create basic function
 
 // 1 Add
-const addNum = (num1, num2) => num1 + num2;
+const addNum = (number1, number2) => number1 + number2;
 
 // 2 Substract
-const subtractNum = (num1, num2) => num1 - num2;
+const subtractNum = (number1, number2) => number1 - number2;
 
 // 3 Multiply
-const multiplyNum = (num1, num2) => num1 * num2;
+const multiplyNum = (number1, number2) => number1 * number2;
 
 // 4 Divide
-const divideNum = (num1, num2) => num1 / num2;
+const divideNum = (number1, number2) => number1 / number2;
 
 let num1 = 0;
 let operator = "";
 let num2 = 0;
 
 const operate = (num1, operator, num2) => {
-    switch(operator) {
-        case "+":
-            addNum(num1, num2);
-            break;
-        case "-":
-            subtractNum(num1, num2);
-            break;
-        case "x":
-            multiplyNum(num1, num2);
-            break;
-        case "/":
-            divideNum(num1, num2);
-            break;
-        default:
-            return "error"
+    if (operator == "+") {
+        return addNum(num1, num2);
+    } else if (operator == "-") {
+        return subtractNum(num1, num2);
+    } else if (operator == "x") {
+        return multiplyNum(num1, num2);
+    } else if (operator == "/") {
+        return divideNum(num1, num2);
     }
 }
 
 const display = document.querySelector(".display");
 // get the text inside button exclude clear and equal button
-const myButton = document.querySelectorAll("button:not(.clear-button):not(.equalbutton)");
+const myButton = document.querySelectorAll("button:not(.clear-button):not(.equal-button)");
 
 myButton.forEach(button => {
     button.addEventListener("click", () =>{
@@ -58,4 +51,18 @@ const removeLastCharacter = (str) => {
 clearButton.addEventListener("click", () => {
     let newDisp = removeLastCharacter(display.innerText);
     display.innerText = newDisp;
+});
+
+// evaluate when user click =
+const evalButton = document.querySelector(".equal-button");
+const mathOperatorsRegex = /(\+|-|\*|\/|x)/;  // Capturing group for operators
+
+evalButton.addEventListener("click", () => {
+    const getDisplay = display.innerText;
+    let splitDisplay = getDisplay.split(mathOperatorsRegex);
+    console.log(splitDisplay);
+    numInp1 = Number(splitDisplay[0]);
+    operInp = splitDisplay[1];
+    numInp2 = Number(splitDisplay[2]);
+    console.log(operate(numInp1, operInp, numInp2));
 })
