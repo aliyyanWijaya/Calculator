@@ -30,13 +30,17 @@ const operate = (num1, operator, num2) => {
 
 const display = document.querySelector(".display");
 // get the text inside button exclude clear and equal button
-const myButton = document.querySelectorAll("button:not(.clear-button):not(.equal-button)");
+const myButton = document.querySelectorAll("button:not(.clear-button):not(.equal-button):not(.clear-display-button)");
+const displayResult = document.querySelector(".display-result");
 
 myButton.forEach(button => {
     button.addEventListener("click", () =>{
+        if (displayResult.innerText) {
+            displayResult.innerText = "";
+            display.innerText = "";
+        }
         const displayNum = button.innerText;
         display.append(displayNum);
-        
     })
 })
 
@@ -56,7 +60,7 @@ clearButton.addEventListener("click", () => {
 // evaluate when user click =
 const evalButton = document.querySelector(".equal-button");
 const mathOperatorsRegex = /(\+|-|\*|\/|x)/;  // Capturing group for operators
-const displayResult = document.querySelector(".display-result");
+
 
 evalButton.addEventListener("click", () => {
     const getDisplay = display.innerText;
@@ -65,4 +69,10 @@ evalButton.addEventListener("click", () => {
     operInp = splitDisplay[1];
     numInp2 = Number(splitDisplay[2]);
     displayResult.innerText = operate(numInp1, operInp, numInp2);
+})
+
+const deleteDisplayButton = document.querySelector(".clear-display-button");
+deleteDisplayButton.addEventListener("click", () => {
+    displayResult.innerText = "";
+    display.innerText = "";
 })
