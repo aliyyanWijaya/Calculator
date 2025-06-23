@@ -32,6 +32,7 @@ const display = document.querySelector(".display");
 // get the text inside button exclude clear and equal button
 const myButton = document.querySelectorAll("button:not(.clear-button):not(.equal-button):not(.clear-display-button)");
 const displayResult = document.querySelector(".display-result");
+const dotButton = document.querySelector(".dot-button");
 
 myButton.forEach(button => {
     button.addEventListener("click", () =>{
@@ -39,6 +40,7 @@ myButton.forEach(button => {
             displayResult.innerText = "";
             display.innerText = "";
         }
+
         const displayNum = button.innerText;
         display.append(displayNum);
     })
