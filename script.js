@@ -40,11 +40,21 @@ myButton.forEach(button => {
             displayResult.innerText = "";
             display.innerText = "";
         }
-
+        
         const displayNum = button.innerText;
         display.append(displayNum);
     })
 })
+
+dotButton.addEventListener("click", (e)=> {
+    let displayText = display.innerText;
+    if (displayText.includes(".")) {
+        dotButton.disabled = true;
+    } else {
+        dotButton.disabled = false;
+    }
+})
+
 
 // remove the display when Clear button clicked
 const clearButton = document.querySelector(".clear-button");
